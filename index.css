@@ -14,7 +14,9 @@
   background-color: #ffffff;
 }
 
-.windows-command-prompt > pre {
+.windows-command-prompt > .language-windows-command-prompt {
+  display: block;
+  min-height: 31px;
   border-width: 16px 19px 16px 2px;
   border-style: solid;
   border-image:
@@ -24,11 +26,12 @@
     color: #e0e0e0;
   background-color: #0c0c0c;
   font-family: "MS Sans Serif", consolas, monospace;
-  margin: 0;
+  margin: -15px 0 0 0;
   padding: 0 0.5em 0 0.5em;
   overflow-x: hidden;
+  white-space: pre;
 }
 
-.windows-command-prompt > pre::selection {
+.windows-command-prompt > .language-windows-command-prompt::selection {
   background: #aaaaaa;
 }
