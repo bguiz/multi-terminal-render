@@ -31,6 +31,8 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
   overflow-x: hidden;
+  font-style: normal;
+  font-weight: normal;
 }
 
 .windows-command-prompt > .language-windows-command-prompt::selection {
