@@ -1,6 +1,6 @@
-# windows-command-prompt-render
+# multi-terminal-render
 
-Demo to show how to make a code snippet look like a Windows command prompt.
+Demo to show how to make a code snippets render command prompts for Linux, Mac, and Windows.
 
 ## Licence
 
