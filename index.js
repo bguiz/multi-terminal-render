@@ -33,6 +33,8 @@ function renderMultipleTerminals(el) {
   children.forEach(function (li, liIdx) {
     renderMultipleTerminalsListElem(ul, li, liIdx);
   });
+  document.body.addEventListener(
+    'click', renderMultipleTerminalsOnClickTabTitle, false);
 }
 
 function renderMultipleTerminalsListElem(ul, li, liIdx) {
@@ -92,6 +94,34 @@ function renderMultipleTerminalsListElem(ul, li, liIdx) {
     tabContent,
     ul.nextSibling,
   );
+}
+
+function renderMultipleTerminalsOnClickTabTitle (e) {
+  const tabTitle = e.target;
+  if (tabTitle.classList.contains('multi-terminal-tabtitle')) {
+    const tab = tabTitle.parentNode;
+    const tabTextId = tab.getAttribute('data-os');
+    const allTabsNodeList =
+      document.querySelectorAll('.multi-terminal-tab');
+    const allTabs =
+      Array.prototype.slice.call(allTabsNodeList);
+    allTabs.forEach(function (currTab) {
+      currTab.classList.toggle(
+        'active',
+        (currTab.getAttribute('data-os') === tabTextId),
+      );
+    });
+    const allTabsContentNodeList =
+      document.querySelectorAll('.multi-terminal-tabcontent');
+    const allTabsContent =
+      Array.prototype.slice.call(allTabsContentNodeList);
+    allTabsContent.forEach(function (currTabContent) {
+      currTabContent.classList.toggle(
+        'active',
+        (currTabContent.getAttribute('data-os') === tabTextId),
+      );
+    });
+  }
 }
 
 function renderCustomTerminalsFrames() {
