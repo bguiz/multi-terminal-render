@@ -24,6 +24,20 @@ function insertDomNodeRelativeTo(node, newNode, isAfter) {
   }
 }
 
+function savedOsSelection(os) {
+  if (!localStorage) {
+    // older browsers simply skip this feature
+    return undefined;
+  }
+  if (os) {
+    // set value
+    return localStorage.setItem('multi-terminal-renderer--selected-os', os);
+  } else {
+    // get value
+    return localStorage.getItem('multi-terminal-renderer--selected-os');
+  }
+}
+
 function renderCustomTerminalsSetup() {
   var elemNodeList = document.querySelectorAll(
     'a[title="multiple-terminals"]',
@@ -128,10 +142,12 @@ function renderMultipleTerminalsListElemOs(osText, osIdx, oses, li, liIdx, ul) {
   tab.classList.add('multi-terminal-tab');
   tab.classList.add(`multi-terminal-tab-${os}`);
   tab.setAttribute('data-os', os);
-  var isFirstTab = (liIdx === 0 && osIdx === 0);
-  tab.classList.toggle('active', isFirstTab);
-  tabTitle.classList.toggle('active', isFirstTab);
-  tabContent.classList.toggle('active', isFirstTab);
+  var prevOs = savedOsSelection();
+  var isActiveTab = (prevOs === os) ||
+    (!prevOs && liIdx === 0 && osIdx === 0);
+  tab.classList.toggle('active', isActiveTab);
+  tabTitle.classList.toggle('active', isActiveTab);
+  tabContent.classList.toggle('active', isActiveTab);
   insertDomNodeRelativeTo(ul, tabContent, true);
 }
 
@@ -139,7 +155,7 @@ function renderMultipleTerminalsOnClickTabTitle (e) {
   var tabTitle = e.target;
   if (tabTitle.classList.contains('multi-terminal-tabtitle')) {
     var tab = tabTitle.parentNode;
-    var tabTextId = tab.getAttribute('data-os');
+    var os = tab.getAttribute('data-os');
     var allTabsNodeList =
       document.querySelectorAll('.multi-terminal-tab');
     var allTabs =
@@ -147,7 +163,7 @@ function renderMultipleTerminalsOnClickTabTitle (e) {
     allTabs.forEach(function (currTab) {
       currTab.classList.toggle(
         'active',
-        (currTab.getAttribute('data-os') === tabTextId),
+        (currTab.getAttribute('data-os') === os),
       );
     });
     var allTabsContentNodeList =
@@ -157,9 +173,10 @@ function renderMultipleTerminalsOnClickTabTitle (e) {
     allTabsContent.forEach(function (currTabContent) {
       currTabContent.classList.toggle(
         'active',
-        (currTabContent.getAttribute('data-os') === tabTextId),
+        (currTabContent.getAttribute('data-os') === os),
       );
     });
+    savedOsSelection(os);
   }
 }
 
