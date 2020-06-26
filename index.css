@@ -47,50 +47,6 @@
   display: block;
 }
 
-
-/* windows command prompt */
-
-@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap');
-
-.windows-command-prompt::before {
-  content: "Command Prompt";
-  display: block;
-  height: 31px;
-  border-width: 0px 129px 0px 139px;
-  border-style: solid;
-  border-image:
-    url("./title-bar.png")
-    0 129 0 139
-    fill;
-  color: transparent;
-  background-color: #ffffff;
-}
-
-.windows-command-prompt > .language-windows-command-prompt {
-  display: block;
-  min-height: 31px;
-  border-width: 16px 19px 16px 2px;
-  border-style: solid;
-  border-image:
-    url("./body.png")
-    16 19 16 2
-    stretch;
-    color: #e0e0e0;
-  background-color: #0c0c0c;
-  font-family: "MS Sans Serif", consolas, monospace;
-  margin: -15px 0 0 0;
-  padding: 0 0.5em 0 0.5em;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  overflow-x: hidden;
-  font-style: normal;
-  font-weight: normal;
-}
-
-.windows-command-prompt > .language-windows-command-prompt::selection {
-  background: #aaaaaa;
-}
-
  /* highlight.js */
 
 blockquote {font-style: italic; font-weight: bold; border-left: 2px solid #F26122;padding-left: 10px;}
@@ -191,4 +147,47 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
+}
+
+/* windows command prompt */
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600&display=swap');
+
+.windows-command-prompt::before {
+  content: "Command Prompt";
+  display: block;
+  height: 31px;
+  border-width: 0px 129px 0px 139px;
+  border-style: solid;
+  border-image:
+    url("./windows-command-prompt-title-bar.png")
+    0 129 0 139
+    fill;
+  color: transparent;
+  background-color: #ffffff;
+}
+
+.windows-command-prompt > .language-windows-command-prompt {
+  display: block;
+  min-height: 31px;
+  border-width: 16px 19px 16px 2px;
+  border-style: solid;
+  border-image:
+    url("./windows-command-prompt-body.png")
+    16 19 16 2
+    stretch;
+    color: #e0e0e0;
+  background-color: #0c0c0c;
+  font-family: "MS Sans Serif", consolas, monospace;
+  margin: -15px 0 0 0;
+  padding: 0 0.5em 0 0.5em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-x: hidden;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.windows-command-prompt > .language-windows-command-prompt::selection {
+  background: #aaaaaa;
 }
