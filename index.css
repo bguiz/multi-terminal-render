@@ -35,7 +35,7 @@
   width: 100%;
   border: 1px solid #c2c2c2;
   border-radius: 0 2px 2px 2px;
-  margin-top: -1px;
+  margin: -1px 0 1em 0;
   padding: 5px;
 }
 
@@ -125,8 +125,8 @@ code { color: #F26122; }
 /* highlight.js overrides */
 
 .highlight {
-  margin: 0 0;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   background-color: #cccccc;
 }
 
@@ -147,6 +147,54 @@ pre {
   margin-top: 0;
   margin-bottom: 1rem;
   overflow: auto;
+}
+
+/* linux terminal */
+
+.multi-terminal-tabcontent .highlight {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.multi-terminal-tabcontent-linux::before {
+  content: "Terminal";
+  display: block;
+  height: 39px;
+  border-width: 0px 39px 0px 39px;
+  border-style: solid;
+  border-image:
+    url("./linux-terminal-title-bar.png")
+    0 39 0 39
+    fill;
+  color: transparent;
+  background-color: #ffffff;
+}
+
+.multi-terminal-tabcontent-linux .language-shell {
+  display: block;
+  min-height: 45px;
+  border-width: 3px 14px 21px 3px;
+  border-style: solid;
+  border-image:
+    url("./linux-terminal-body.png")
+    3 14 21 3
+    stretch;
+    color: #e0e0e0;
+  background-color: #0c0c0c;
+  font-family: "Ubuntu Mono", consolas, monospace;
+  margin: 0 0 0 0;
+  padding: 0.25em 0.5em 0 0.5em;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-x: hidden;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.multi-terminal-tabcontent-linux .language-shell *::selection {
+  background: #22f200;
 }
 
 /* windows command prompt */
